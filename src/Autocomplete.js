@@ -6,82 +6,6 @@ import throttle from 'lodash.throttle'
 // Internal Dependencies
 import { postAutocompleteAddress } from './api'
 
-const LOB_LABEL = 'lob-label'
-const LOB_URL =
-  'https://www.lob.com/address-verification?utm_source=autocomplete&utm_medium=react'
-
-const lobGrayText = {
-  color: '#888',
-  textDecoration: 'inherit'
-}
-
-const lobLabel = {
-  alignItems: 'center',
-  borderBottom: '1px solid #DDDDDD',
-  cursor: 'pointer',
-  display: 'flex',
-  fontSize: '17px',
-  padding: '16px',
-  pointerEvents: 'none'
-}
-
-const lobLabelLink = {
-  fontWeight: 600,
-  color: '#0699D6',
-  textDecoration: 'inherit'
-}
-
-const lobLabelText = {
-  flex: 1,
-  fontWeight: 400,
-  marginLeft: '12px'
-}
-
-const lobLogo = {
-  height: '.9em',
-  marginLeft: '1px',
-  marginTop: '3px'
-}
-
-const logoLarge = {
-  height: '21px'
-}
-
-const LobLogo = ({ style }) => {
-  return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 1259 602'
-      style={style}
-    >
-      <path
-        fill='#0099d7'
-        // eslint-disable-next-line
-        d='M1063,141c-47.06,0-89,18.33-121,50.78V0H780V338.74C765,222.53,666.88,138,540,138c-137,0-242,101-242,232a235,235,0,0,0,7.7,60H164V0H0V585H307l14.54-112.68C359.94,550,441.74,602,540,602c127.75,0,225.08-83.62,240-200.41V585H930V540.27c31.8,37,77.27,56.73,133,56.73,103,0,196-109,196-228C1259,239,1175,141,1063,141ZM540,450c-45,0-81-36-81-80s36-80,81-80c46,0,81,35,81,80S585,450,540,450Zm475-1c-46,0-83-36-83-80a82.8,82.8,0,0,1,82.6-83h.4c47,0,85,37,85,83C1100,413,1062,449,1015,449Z'
-      />
-    </svg>
-  )
-}
-
-const poweredByLob = () => (
-  <a href={LOB_URL} style={lobGrayText}>
-    <span style={{ verticalAlign: 'top' }}>Powered by </span>
-    <LobLogo style={lobLogo} />
-  </a>
-)
-
-const getLobLabel = () => (
-  <div style={lobLabel}>
-    <LobLogo style={logoLarge} />
-    <span style={{ ...lobGrayText, ...lobLabelText }}>
-      Deliverable addresses
-    </span>
-    <a style={lobLabelLink} href={LOB_URL}>
-      Learn more
-    </a>
-  </div>
-)
-
 // Highlight the users input in the primary line by comparing char by char. We only check the
 // primary line for simplicity sake
 const getOptionElement = (suggestion, inputValue) => {
@@ -216,13 +140,7 @@ const Autocomplete = ({
           label: getOptionElement(x, inputValue)
         }))
 
-        setAutocompleteResults([
-          {
-            value: LOB_LABEL,
-            label: getLobLabel()
-          },
-          ...newSuggestions
-        ])
+        setAutocompleteResults([newSuggestions])
       })
       .catch((err) => {
         console.error(err.message)
@@ -331,7 +249,7 @@ const Autocomplete = ({
       inputValue={inputValue}
       options={autocompleteResults}
       controlShouldRenderValue={false}
-      noOptionsMessage={poweredByLob}
+      noOptionsMessage={'No resultss'}
       placeholder='Start typing an address...'
       value={selectValue}
       {...reactSelectProps}

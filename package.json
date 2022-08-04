@@ -1,5 +1,5 @@
 {
-    "name": "@lob/react-address-autocomplete",
+    "name": "@patchrx/react-address-autocomplete",
     "version": "2.1.3",
     "description": "A collection of components and utility functions for verifying and suggesting addresses using Lob",
     "author": "Lob",
@@ -23,7 +23,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/lob/react-address-autocomplete.git"
+        "url": "git+https://github.com/patchrx/react-address-autocomplete.git"
     },
     "dependencies": {
         "base-64": "^1.0.0",

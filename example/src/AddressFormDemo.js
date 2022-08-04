@@ -1,6 +1,6 @@
 // External Dependencies
 import React, { useState } from 'react';
-import { AddressForm } from '@lob/react-address-autocomplete'
+import { AddressForm } from '@patchrx/react-address-autocomplete'
 
 // Internal Dependencies
 import VerificationResult from './VerificationResult'
